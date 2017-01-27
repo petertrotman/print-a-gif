@@ -1,0 +1,15 @@
+.layout {
+  composes: container from "milligram"
+}
+
+.header {
+  composes: row from "milligram"
+}
+
+.nav {
+  composes: row from "milligram"
+}
+
+.footer {
+  composes: row from "milligram"
+}

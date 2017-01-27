@@ -60,6 +60,7 @@ const devConfig = Object.assign({}, baseConfig, {
 });
 
 const prodConfig = Object.assign({}, baseConfig, {
+  devtool: 'cheap-module-source-map',
 });
 
 module.exports =

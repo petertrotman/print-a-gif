@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './App.css';
+import Layout from './layout/Layout';
 
 const App = () => (
-  <div className={styles.app}>
-    <h2>Hello, </h2>
-  </div>
+  <Layout>
+    { null }
+  </Layout>
 );
 
 export default App;
