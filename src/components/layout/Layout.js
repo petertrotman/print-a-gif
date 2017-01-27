@@ -6,14 +6,19 @@ import Content from './content/Content';
 import Footer from './footer/Footer';
 import styles from './Layout.css';
 
-export default props => (
+const Layout = ({ children, ...childProps }) => (
   <div className={styles.layout}>
-    <Header />
-    <Nav />
-    <Content>
-      { props.children }
+    <Header {...childProps} />
+    <Nav {...childProps} />
+    <Content {...childProps}>
+      { children }
     </Content>
-    <Footer />
+    <Footer {...childProps} />
   </div>
 );
 
+Layout.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};
+
+export default Layout;

@@ -1,5 +1,6 @@
 .layout {
   composes: container from "milligram";
+  max-width: 80rem;
   display: flex;
   flex-direction: column;
   position: absolute;

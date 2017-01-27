@@ -1,8 +1,14 @@
 import React from 'react';
 import styles from './Content.css';
 
-export default props => (
-  <div className={styles.content}>
+const Content = props => (
+  <main className={styles.content}>
     { props.children }
-  </div>
+  </main>
 );
+
+Content.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};
+
+export default Content;
