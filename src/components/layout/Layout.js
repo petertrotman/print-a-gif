@@ -9,7 +9,9 @@ export default props => (
   <div className={styles.layout}>
     <Header />
     <Nav />
-    { props.children }
+    <main className={styles.content}>
+      { props.children }
+    </main>
     <Footer />
   </div>
 );

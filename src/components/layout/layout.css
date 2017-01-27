@@ -1,15 +1,37 @@
 .layout {
-  composes: container from "milligram"
+  composes: container from "milligram";
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .header {
-  composes: row from "milligram"
+  composes: row from "milligram";
+  align-items: center;
+  flex-direction: column;
+}
+
+.headerTitle {
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 6rem;
+}
+
+.headerText {
+  font-size: 2rem;
 }
 
 .nav {
-  composes: row from "milligram"
+  composes: row from "milligram";
+}
+
+.content {
+  flex: 1;
 }
 
 .footer {
-  composes: row from "milligram"
+  composes: row from "milligram";
 }
