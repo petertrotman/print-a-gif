@@ -1,0 +1,24 @@
+{
+  "name": "print-a-gif",
+  "version": "0.0.0",
+  "description": "JS only implementation of the Print A Gif project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petertrotman/print-a-gif.git"
+  },
+  "keywords": [
+    "printagif",
+    "print",
+    "gif"
+  ],
+  "author": "Peter Trotman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petertrotman/print-a-gif/issues"
+  },
+  "homepage": "https://github.com/petertrotman/print-a-gif#readme"
+}
