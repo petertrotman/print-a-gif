@@ -1,17 +1,18 @@
 import React from 'react';
 
-import Header from './Header';
-import Nav from './Nav';
-import Footer from './Footer';
-import styles from './layout.css';
+import Header from './header/Header';
+import Nav from './nav/Nav';
+import Content from './content/Content';
+import Footer from './footer/Footer';
+import styles from './Layout.css';
 
 export default props => (
   <div className={styles.layout}>
     <Header />
     <Nav />
-    <main className={styles.content}>
+    <Content>
       { props.children }
-    </main>
+    </Content>
     <Footer />
   </div>
 );

@@ -1,0 +1,3 @@
+.nav {
+  composes: row from "milligram";
+}

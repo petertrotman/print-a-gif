@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './layout.css'
+import styles from './Nav.css'
 
 export default () => (
   <nav className={styles.nav}>
