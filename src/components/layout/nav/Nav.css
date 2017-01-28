@@ -3,10 +3,24 @@
 }
 
 .navItemList {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .navItem {
+  padding: 0 1em;
 }
 
 .navItemLink {
+}
+
+.navItemLinkDisabled {
+  cursor: default;
+  color: #606c76;
+}
+
+.navItemLinkActive {
+  color: green;
 }

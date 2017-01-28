@@ -19,7 +19,9 @@ export default class App extends React.Component {
       enabledRoutes: this.state.enabledRoutes,
       handleClick: (e, r) => {
         e.preventDefault();
-        this.setState({ activeRoute: r });
+        if (this.state.enabledRoutes.includes(r)) {
+          this.setState({ activeRoute: r });
+        }
       },
     };
   }

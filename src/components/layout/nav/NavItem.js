@@ -5,11 +5,11 @@ const NavItem = props => (
   <li className={styles.navItem}>
     <a
       href={props.route.path}
-      className={`
-        ${styles.navItemLink}
-        ${props.active ? 'active' : ''}
-        ${props.disabled ? 'disabled' : ''}
-      `}
+      className={
+        `${styles.navItemLink} ` +
+        `${props.active ? styles.navItemLinkActive : ''} ` +
+        `${props.disabled ? styles.navItemLinkDisabled : ''} `
+      }
       onClick={props.handleClick}
     >
       { props.route.name }

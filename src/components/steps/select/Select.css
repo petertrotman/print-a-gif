@@ -1,0 +1,15 @@
+.select {
+}
+
+.buttonsDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.button {
+  composes: button from "milligram";
+  composes: button-outline from "milligram";
+  width: 48%;
+}
