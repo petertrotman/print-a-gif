@@ -7,28 +7,24 @@ export default class Select extends React.Component {
   constructor() {
     super();
     this.state = {
-      gifSrc: '',
-      gifFileSrc: null,
+      fetchSrc: null,
+      fileSrc: null,
     };
   }
 
   handleChange(e) {
     this.setState({
-      gifSrc: e.target.value,
-      gifFileSrc: null,
+      fetchSrc: e.target.value,
+      fileSrc: null,
     });
-  }
-
-  handleOk() {
-    console.log(this.state);
   }
 
   handleSelectFile() {
     const file = this.fileInputEl.files[0];
     this.setState({
-      gifSrc: file.name,
-      gifFileSrc: URL.createObjectURL(file),
-    }, () => this.handleOk());
+      fetchSrc: file.name,
+      fileSrc: file,
+    });
   }
 
   registerFileInput(el) {
@@ -42,27 +38,24 @@ export default class Select extends React.Component {
         <p>Paste a link to your GIF below, or select from a file on your computer.</p>
         <input
           type="text"
+          style={{ width: '100%', maxWidth: '60rem' }}
           placeholder="Paste your link here"
-          value={this.state.gifSrc}
+          value={this.state.fetchSrc}
           onChange={e => this.handleChange(e)}
         />
-        <div className={styles.buttonsDiv}>
-          <button
-            className={styles.button}
-            onClick={() => this.handleOk()}
-          >
-            Ok
-          </button>
-          <input
-            type="file"
-            accept="image/gif"
-            className={styles.button}
-            ref={el => this.registerFileInput(el)}
-            onChange={() => this.handleSelectFile()}
-            placeholder="Select File"
-          />
-        </div>
-        <ImagePreview src={this.state.gifFileSrc || this.state.gifSrc} />
+        <input
+          type="file"
+          accept="image/gif"
+          className={styles.button}
+          style={{ width: '100%', maxWidth: '60rem' }}
+          ref={el => this.registerFileInput(el)}
+          onChange={() => this.handleSelectFile()}
+          placeholder="Select File"
+        />
+        <ImagePreview
+          fileSrc={this.state.fileSrc}
+          fetchSrc={this.state.fetchSrc}
+        />
       </div>
     );
   }

@@ -1,15 +1,23 @@
 .select {
-}
-
-.buttonsDiv {
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
 }
 
 .button {
   composes: button from "milligram";
   composes: button-outline from "milligram";
-  width: 48%;
+}
+
+.imagePreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nextButton {
+  composes: button;
+  align-self: top;
+  margin: 2rem;
 }
