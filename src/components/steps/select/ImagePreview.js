@@ -8,6 +8,7 @@ export default class ImagePreview extends React.Component {
     return {
       fetchSrc: React.PropTypes.string,
       fileSrc: React.PropTypes.object,
+      handleSelect: React.PropTypes.func.isRequired,
     };
   }
 
@@ -21,8 +22,10 @@ export default class ImagePreview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: null,
       img: props.fileSrc && URL.createObjectURL(props.fileSrc),
       isFetching: false,
+      isLoaded: false,
       error: null,
     };
   }
@@ -37,33 +40,49 @@ export default class ImagePreview extends React.Component {
     if (nextProps.fetchSrc && !nextProps.fileSrc) {
       this.fetchImage(nextProps.fetchSrc);
     } else if (nextProps.fileSrc) {
-      this.setState({
-        isFetching: false,
-        error: null,
-        img: URL.createObjectURL(nextProps.fileSrc),
-      });
+      if (nextProps.fileSrc.type === 'image/gif') {
+        this.setState({
+          isFetching: false,
+          isLoaded: false,
+          error: null,
+          img: URL.createObjectURL(nextProps.fileSrc),
+          data: nextProps.fileSrc,
+        });
+      } else {
+        this.setState({
+          isFetching: false,
+          isLoaded: false,
+          error: 'Not a GIF',
+          img: null,
+          data: null,
+        });
+      }
     }
   }
 
   fetchImage(imgSrc) {
     this.setState({
       isFetching: true,
+      isLoaded: false,
       error: null,
     });
 
-    // fetch(imgSrc, { mode: 'no-cors' })
     fetch(imgSrc)
       .then((res) => {
         if (!res.ok) throw new Error(res.statusText);
         return res;
       })
       .then(res => res.blob())
-      .then(blob => URL.createObjectURL(blob))
-      .then((img) => {
+      .then((data) => {
+        if (data.type !== 'image/gif') {
+          throw new Error('Not a GIF');
+        }
         if (this.props.fetchSrc === imgSrc) {
+          const img = URL.createObjectURL(data);
           this.setState({
             isFetching: false,
             error: null,
+            data,
             img,
           });
         }
@@ -71,13 +90,16 @@ export default class ImagePreview extends React.Component {
       .catch((error) => {
         this.setState({
           isFetching: false,
+          isLoaded: false,
           img: null,
+          data: null,
           error,
         });
       });
   }
 
-  handleImgLoad(e) {
+  handleImgLoad() {
+    this.setState({ isLoaded: true });
   }
 
   handleImgError(e) {
@@ -86,6 +108,7 @@ export default class ImagePreview extends React.Component {
 
   handleClickNext(e) {
     e.preventDefault();
+    this.props.handleSelect(this.state.data);
   }
 
   render() {
@@ -101,7 +124,7 @@ export default class ImagePreview extends React.Component {
             onError={e => this.handleImgError(e)}
           />
         }
-        { !this.state.error &&
+        { !this.state.error && this.state.isLoaded &&
           <button
             className={styles.nextButton}
             onClick={e => this.handleClickNext(e)}

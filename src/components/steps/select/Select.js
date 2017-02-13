@@ -4,6 +4,12 @@ import styles from './Select.css';
 import ImagePreview from './ImagePreview';
 
 export default class Select extends React.Component {
+  static get propTypes() {
+    return {
+      handleSelect: React.PropTypes.func.isRequired,
+    };
+  }
+
   constructor() {
     super();
     this.state = {
@@ -21,6 +27,7 @@ export default class Select extends React.Component {
 
   handleSelectFile() {
     const file = this.fileInputEl.files[0];
+    if (!file) return;  // undefined in case of cancel
     this.setState({
       fetchSrc: file.name,
       fileSrc: file,
@@ -55,6 +62,7 @@ export default class Select extends React.Component {
         <ImagePreview
           fileSrc={this.state.fileSrc}
           fetchSrc={this.state.fetchSrc}
+          handleSelect={this.props.handleSelect}
         />
       </div>
     );

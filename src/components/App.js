@@ -9,8 +9,17 @@ export default class App extends React.Component {
     super();
     this.state = {
       activeRoute: 'select',
-      enabledRoutes: ['select', 'process'],
+      enabledRoutes: ['select'],
+      data: null,
     };
+  }
+
+  handleSelect(data) {
+    this.setState({
+      data,
+      activeRoute: 'process',
+      enabledRoutes: ['select', 'process'],
+    });
   }
 
   get layoutProps() {
@@ -35,7 +44,9 @@ export default class App extends React.Component {
     const ActiveRouteComponent = this.activeRouteComponent;
     return (
       <Layout {...this.layoutProps}>
-        <ActiveRouteComponent />
+        <ActiveRouteComponent
+          handleSelect={data => this.handleSelect(data)}
+        />
       </Layout>
     );
   }
