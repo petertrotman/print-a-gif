@@ -45,6 +45,7 @@ export default class App extends React.Component {
     return (
       <Layout {...this.layoutProps}>
         <ActiveRouteComponent
+          data={this.state.data}
           handleSelect={data => this.handleSelect(data)}
         />
       </Layout>

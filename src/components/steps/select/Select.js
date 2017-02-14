@@ -13,7 +13,7 @@ export default class Select extends React.Component {
   constructor() {
     super();
     this.state = {
-      fetchSrc: null,
+      fetchSrc: '',
       fileSrc: null,
     };
   }
