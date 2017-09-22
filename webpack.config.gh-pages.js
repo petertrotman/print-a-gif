@@ -1,13 +1,10 @@
 const path = require('path');
 
 const config = {
-  entry: './src/lib.js',
+  entry: './src/web.js',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: '[name].js',
-    library: 'PrintAGif',
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
+    filename: 'web.js',
   },
   module: {
     rules: [
@@ -17,6 +14,9 @@ const config = {
         loader: 'babel-loader',
         options: {
           presets: ['es2015'],
+          plugins: [
+            ['transform-react-jsx', { pragma: 'h' }],
+          ],
         },
       },
     ],

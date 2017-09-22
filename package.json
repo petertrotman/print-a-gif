@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "build:pages": "webpack -p --config webpack.config.gh-pages.js"
   },
   "repository": {
     "type": "git",
@@ -21,14 +22,19 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "eslint": "^4.7.2",
+    "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
     "mocha": "^3.5.3",
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "hyperapp": "^0.12.1",
     "base64-arraybuffer": "^0.1.5"
   }
 }

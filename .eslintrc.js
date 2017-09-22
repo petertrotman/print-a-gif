@@ -1,3 +1,6 @@
 module.exports = {
-    "extends": "airbnb-base"
+  "extends": "airbnb"
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+  }
 };
